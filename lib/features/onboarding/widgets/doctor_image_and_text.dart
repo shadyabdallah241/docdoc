@@ -15,6 +15,7 @@ class DoctorImageAndText extends StatelessWidget {
           child: Container(
             height: .infinity,
             width: .infinity,
+            
             color: AppColors.white.withAlpha(235),
           ),
         ),
@@ -43,7 +44,7 @@ class DoctorImageAndText extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Best Doctor Appointment App",
+                "Best Doctor \nAppointment App",
                 style: AppTextStyles.text32Bold(
                   color: AppColors.primary100,
                 ).copyWith(height: 1.4),
