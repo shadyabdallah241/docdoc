@@ -1,0 +1,8 @@
+flutter_native_splash:
+  color: "#ffffff"               # Background for older Android versions & iOS
+  image: assets/images/splash.png       # Centered logo for older Android versions & iOS
+
+  # Android 12+ specific settings
+  android_12:
+    color: "#ffffff"             # Background color for Android 12+
+    image: assets/images/splash_12.png  # MUST be a square with 20-30% padding to prevent cropping
