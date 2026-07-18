@@ -20,7 +20,6 @@ class AppMainButton extends StatelessWidget {
           borderRadius: BorderRadiusGeometry.circular(16),
         ),
       ),
-
       child: Text(
         text,
         style: AppTextStyles.text16SemiBold(color: AppColors.white),
