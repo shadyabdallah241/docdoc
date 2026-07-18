@@ -1,12 +1,19 @@
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/app_text_styles.dart';
 import 'package:docdoc/core/widgets/app_main_button.dart';
+import 'package:docdoc/core/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,118 +45,91 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: 36.h),
-                Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        fillColor: AppColors.surfaceForm,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(
-                            color: AppColors.grey30,
-                            width: 2,
-                          ),
-                        ),
-                        hint: Text(
-                          "Email",
-                          style: AppTextStyles.text14Regular(
-                            color: AppColors.grey50,
-                          ).copyWith(height: 1.9),
-                        ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      AppTextFormField(
+                        hintText: "Email",
+                        onChanged: (value) {},
                       ),
-                    ),
-                    SizedBox(height: 16.h),
-                    TextField(
-                      decoration: InputDecoration(
-                        fillColor: AppColors.surfaceForm,
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          borderSide: BorderSide(
-                            color: AppColors.grey30,
-                            width: 2,
-                          ),
-                        ),
-                        hint: Text(
-                          "Password",
-                          style: AppTextStyles.text14Regular(
-                            color: AppColors.grey50,
-                          ).copyWith(height: 1.9),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: .spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Checkbox(
-                              value: true,
-                              onChanged: (value) {},
-                              side: const BorderSide(
-                                color: Colors.red,
-                                width: 2,
-                              ),
-                              fillColor: WidgetStateProperty.all(Colors.white),
-                              checkColor: AppColors.fillBlue,
-                            ),
-                            Text(
-                              "Remember me",
-                              style: AppTextStyles.text12Regular(
-                                color: AppColors.grey60,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            foregroundColor: AppColors.primary100,
-                          ),
-                          onPressed: () {},
-                          child: Text("Forgot Password?"),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 40),
-                    AppMainButton(onPressed: () {}, text: "Login"),
-                    SizedBox(height: 45),
-                    Row(
-                      spacing: 10,
-                      children: [
-                        Expanded(child: Divider()),
-                        Text(
-                          "Or sign in with",
-                          style: AppTextStyles.text12Regular(
-                            color: AppColors.grey60,
-                          ),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    SizedBox(height: 32.h),
-                    SizedBox(
-                      width: 200.h,
-                      child: Row(
+                      SizedBox(height: 16.h),
+                      AppTextFormField(hintText: "Password", isPassword: true),
+
+                      Row(
                         mainAxisAlignment: .spaceBetween,
-                        spacing: 10,
                         children: [
-                          Image.asset(
-                            "assets/images/google_logo.png",
-                            width: 46.h,
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: true,
+                                onChanged: (value) {},
+                                side: const BorderSide(
+                                  color: Colors.red,
+                                  width: 2,
+                                ),
+                                fillColor: WidgetStateProperty.all(
+                                  Colors.white,
+                                ),
+                                checkColor: AppColors.fillBlue,
+                              ),
+                              Text(
+                                "Remember me",
+                                style: AppTextStyles.text12Regular(
+                                  color: AppColors.grey60,
+                                ),
+                              ),
+                            ],
                           ),
-                          Image.asset(
-                            "assets/images/facebook_logo.png",
-                            width: 46.h,
-                          ),
-                          Image.asset(
-                            "assets/images/apple_logo.png",
-                            width: 46.h,
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.primary100,
+                            ),
+                            onPressed: () {},
+                            child: Text("Forgot Password?"),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 40),
+                      AppMainButton(onPressed: () {}, text: "Login"),
+                      SizedBox(height: 45),
+                      Row(
+                        spacing: 10,
+                        children: [
+                          Expanded(child: Divider()),
+                          Text(
+                            "Or sign in with",
+                            style: AppTextStyles.text12Regular(
+                              color: AppColors.grey60,
+                            ),
+                          ),
+                          Expanded(child: Divider()),
+                        ],
+                      ),
+                      SizedBox(height: 32.h),
+                      SizedBox(
+                        width: 200.h,
+                        child: Row(
+                          mainAxisAlignment: .spaceBetween,
+                          spacing: 10,
+                          children: [
+                            Image.asset(
+                              "assets/images/google_logo.png",
+                              width: 46.h,
+                            ),
+                            Image.asset(
+                              "assets/images/facebook_logo.png",
+                              width: 46.h,
+                            ),
+                            Image.asset(
+                              "assets/images/apple_logo.png",
+                              width: 46.h,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 32.h),
                 RichText(
@@ -165,7 +145,8 @@ class LoginScreen extends StatelessWidget {
                         ).copyWith(height: 1.5),
                       ),
                       TextSpan(
-                        text: " and ",
+                        text: "and ",
+
                         style: AppTextStyles.text12Regular(
                           color: AppColors.grey60,
                         ),
@@ -189,7 +170,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "Sign Up",
+                        text: " Sign Up",
                         style: AppTextStyles.text12SemiBold(
                           color: AppColors.primary100,
                         ),
