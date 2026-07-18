@@ -52,8 +52,8 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                   });
                 },
                 icon: _isObscureText
-                    ? Icon(Icons.visibility_off)
-                    : Icon(Icons.visibility),
+                    ? Icon(Icons.visibility_off, color: AppColors.primary100)
+                    : Icon(Icons.visibility, color: AppColors.primary100),
               )
             : null,
 
