@@ -6,12 +6,16 @@ class AppTextFormField extends StatefulWidget {
   final String hintText;
   final bool isPassword;
   final void Function(String value)? onChanged;
+  final TextEditingController? controller;
+  final String? Function(String? value)? validator;
 
   const AppTextFormField({
     super.key,
     required this.hintText,
     this.isPassword = false,
     this.onChanged,
+    required this.controller,
+    this.validator,
   });
 
   @override
@@ -30,12 +34,22 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
+      controller: widget.controller,
       obscureText: _isObscureText,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
         isDense: false,
         fillColor: AppColors.surfaceForm,
         filled: true,
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: AppColors.fillRed, width: 2),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: AppColors.fillRed, width: 2),
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(color: AppColors.primary80, width: 2),
