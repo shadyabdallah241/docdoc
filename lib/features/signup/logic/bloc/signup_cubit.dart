@@ -8,14 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SignupCubit extends Cubit<SignupState> {
   final SignupRepo _signupRepo;
   SignupCubit(this._signupRepo) : super(SignupState.initial());
-
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  final usernameController = TextEditingController();
+  final phoneController = TextEditingController();
   Future<void> emitSignupStates(SignupRequestBody signupRequestBody) async {
     emit(const SignupState.loading());
 
@@ -28,6 +27,26 @@ class SignupCubit extends Cubit<SignupState> {
       failure: (errorHandler) {
         emit(SignupState.error(error: errorHandler.apiError.message ?? ""));
       },
+    );
+  }
+
+  Future<void> signup({
+    required String name,
+    required String phoneNumber,
+    required String email,
+    required String password,
+    required String passwordConfirmation,
+    required int gender,
+  }) async {
+    emitSignupStates(
+      SignupRequestBody(
+        name: name,
+        phoneNumber: phoneNumber,
+        email: email,
+        password: password,
+        passwordConfirmation: passwordConfirmation,
+        gender: gender,
+      ),
     );
   }
 }
