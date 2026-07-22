@@ -22,7 +22,7 @@ class PasswordRequirement extends StatelessWidget {
         ),
         Text(
           text,
-          style: AppTextStyles.text14Bold(
+          style: AppTextStyles.text12Regular(
             color: isValid ? AppColors.fillGreen : AppColors.grey60,
           ),
         ),
