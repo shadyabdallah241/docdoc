@@ -1,7 +1,12 @@
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/app_text_styles.dart';
 import 'package:docdoc/core/widgets/app_main_button.dart';
+<<<<<<< Updated upstream
 import 'package:docdoc/core/widgets/app_text_form_field.dart';
+=======
+import 'package:docdoc/features/login/logic/bloc/login_cubit.dart';
+import 'package:docdoc/features/login/ui/widgets/login_form.dart';
+>>>>>>> Stashed changes
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
@@ -13,7 +18,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+<<<<<<< Updated upstream
   final GlobalKey _formKey = GlobalKey<FormState>();
+=======
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,9 +56,74 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 SizedBox(height: 36.h),
+<<<<<<< Updated upstream
                 Form(
                   key: _formKey,
                   child: Column(
+=======
+                LoginForm(),
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: true,
+                          onChanged: (value) {},
+                          side: const BorderSide(color: Colors.red, width: 2),
+                          fillColor: WidgetStateProperty.all(Colors.white),
+                          checkColor: AppColors.fillBlue,
+                        ),
+                        Text(
+                          "Remember me",
+                          style: AppTextStyles.text12Regular(
+                            color: AppColors.grey60,
+                          ),
+                        ),
+                      ],
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColors.primary100,
+                      ),
+                      onPressed: () {},
+                      child: Text("Forgot Password?"),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                AppMainButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<LoginCubit>().login(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                    }
+                  },
+                  text: "Login",
+                ),
+                SizedBox(height: 45),
+                Row(
+                  spacing: 10,
+                  children: [
+                    Expanded(child: Divider()),
+                    Text(
+                      "Or sign in with",
+                      style: AppTextStyles.text12Regular(
+                        color: AppColors.grey60,
+                      ),
+                    ),
+                    Expanded(child: Divider()),
+                  ],
+                ),
+                SizedBox(height: 32.h),
+                SizedBox(
+                  width: 200.h,
+                  child: Row(
+                    mainAxisAlignment: .spaceBetween,
+                    spacing: 10,
+>>>>>>> Stashed changes
                     children: [
                       AppTextFormField(
                         hintText: "Email",
