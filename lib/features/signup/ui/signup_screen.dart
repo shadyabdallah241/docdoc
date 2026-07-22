@@ -1,7 +1,6 @@
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/app_text_styles.dart';
 import 'package:docdoc/core/widgets/app_main_button.dart';
-import 'package:docdoc/features/signup/data/models/signup_request_body.dart';
 import 'package:docdoc/features/signup/logic/bloc/signup_cubit.dart';
 import 'package:docdoc/features/signup/ui/widgets/signup_form.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +17,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<SignupCubit>();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -36,6 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     SizedBox(height: 8),
+
                     Text(
                       "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!",
                       style: AppTextStyles.text14Regular(
@@ -50,7 +51,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 SizedBox(height: 40),
                 AppMainButton(
                   onPressed: () {
-                    validateSignup(context);
+                    if (cubit.formKey.currentState!.validate()) {
+                      context.read<SignupCubit>().signup(
+                        name: cubit.usernameController.text,
+                        phoneNumber: cubit.phoneController.text,
+                        email: cubit.emailController.text,
+                        password: cubit.passwordController.text,
+                        passwordConfirmation: cubit.passwordController.text,
+                        gender: 0,
+                      );
+                    }
                   },
                   text: "Create Account",
                 ),
@@ -135,22 +145,5 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
-  }
-
-  void validateSignup(BuildContext context) {
-    final signupCubit = context.read<SignupCubit>();
-    final bool isValid = signupCubit.formKey.currentState!.validate();
-    if (isValid) {
-      signupCubit.emitSignupStates(
-        SignupRequestBody(
-          name: signupCubit.userNameController.text,
-          phoneNumber: signupCubit.phoneController.text,
-          email: signupCubit.emailController.text,
-          password: signupCubit.passwordController.text,
-          passwordConfirmation: signupCubit.confirmController.text,
-          gender: 0,
-        ),
-      );
-    }
   }
 }

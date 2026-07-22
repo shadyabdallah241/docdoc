@@ -8,51 +8,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
-class SignupForm extends StatelessWidget {
+class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
 
   @override
+  State<SignupForm> createState() => _SignupFormState();
+}
+
+class _SignupFormState extends State<SignupForm> {
+  @override
   Widget build(BuildContext context) {
+    final cubit = context.read<SignupCubit>();
     return BlocProvider(
       create: (context) => PasswordValidationCubit(),
       child: Builder(
         builder: (context) {
           return Form(
-            key: context.read<SignupCubit>().formKey,
+            key: cubit.formKey,
             child: Column(
               children: [
                 AppTextFormField(
                   hintText: "User Name",
-                  controller: context.read<SignupCubit>().userNameController,
+                  controller: cubit.usernameController,
                   validator: AppValidators.userName,
                 ),
                 SizedBox(height: 8.h),
                 AppTextFormField(
                   hintText: "Phone Number",
-                  controller: context.read<SignupCubit>().phoneController,
+                  controller: cubit.phoneController,
                   validator: AppValidators.phoneNumber,
-                  onChanged: (value) {
-                    context.read<PasswordValidationCubit>().validatePassword(
-                      value,
-                    );
-                  },
                 ),
                 SizedBox(height: 8.h),
                 AppTextFormField(
                   hintText: "Email",
-                  controller: context.read<SignupCubit>().emailController,
+                  controller: cubit.emailController,
                   validator: AppValidators.email,
-                  onChanged: (value) {
-                    context.read<PasswordValidationCubit>().validatePassword(
-                      value,
-                    );
-                  },
                 ),
                 SizedBox(height: 8.h),
                 AppTextFormField(
                   hintText: "Password",
                   isPassword: true,
-                  controller: context.read<SignupCubit>().passwordController,
+                  controller: cubit.passwordController,
                   validator: AppValidators.password,
                   onChanged: (value) {
                     context.read<PasswordValidationCubit>().validatePassword(
@@ -62,11 +58,7 @@ class SignupForm extends StatelessWidget {
                 ),
                 BlocBuilder<PasswordValidationCubit, PasswordValidationState>(
                   builder: (context, state) {
-                    if (context
-                        .read<SignupCubit>()
-                        .passwordController
-                        .text
-                        .isEmpty) {
+                    if (cubit.passwordController.text.isEmpty) {
                       return SizedBox.shrink();
                     }
                     return Padding(
@@ -104,9 +96,9 @@ class SignupForm extends StatelessWidget {
                 AppTextFormField(
                   hintText: "Confirm Password",
                   isPassword: true,
-                  controller: context.read<SignupCubit>().confirmController,
+                  controller: cubit.confirmPasswordController,
                   validator: AppValidators.confirmPassword(
-                    context.read<SignupCubit>().passwordController,
+                    cubit.passwordController,
                   ),
                 ),
                 SizedBox(height: 8.h),
