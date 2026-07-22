@@ -22,11 +22,12 @@ class _ApiService implements ApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<LoginResponse> login(LoginRequestBody loginRequestBody) async {
+  Future<LoginResponse> login(Map<String, dynamic> loginRequestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = loginRequestBody;
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequestBody);
     final _options = _setStreamType<LoginResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(

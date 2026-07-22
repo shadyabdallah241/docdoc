@@ -11,7 +11,7 @@ class LoginRepo {
     LoginRequestBody loginRequestBody,
   ) async {
     try {
-      final response = await _apiService.login(loginRequestBody);
+      final response = await _apiService.login(loginRequestBody.toJson());
       return ApiResult.success(response);
     } catch (error) {
       final errorHandler = ErrorHandler.handle(error);

@@ -209,8 +209,8 @@ return $default(_that.email,_that.password);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _LoginRequestBody implements LoginRequestBody {
-  const _LoginRequestBody({required this.email, required this.password});
+class _LoginRequestBody extends LoginRequestBody {
+  const _LoginRequestBody({required this.email, required this.password}): super._();
   factory _LoginRequestBody.fromJson(Map<String, dynamic> json) => _$LoginRequestBodyFromJson(json);
 
 @override final  String email;

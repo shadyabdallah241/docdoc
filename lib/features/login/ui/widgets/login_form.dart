@@ -53,6 +53,7 @@ class LoginForm extends StatelessWidget {
                       child: Column(
                         spacing: 8,
                         children: [
+                          SizedBox(height: 2),
                           PasswordRequirement(
                             text: "At least 8 characters",
                             isValid: state.hasMinLength,
