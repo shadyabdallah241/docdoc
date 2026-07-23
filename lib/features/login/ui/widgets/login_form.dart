@@ -32,11 +32,6 @@ class LoginForm extends StatelessWidget {
                   isPassword: true,
                   controller: context.read<LoginCubit>().passwordController,
                   validator: AppValidators.password,
-                  onChanged: (value) {
-                    context.read<PasswordValidationCubit>().validatePassword(
-                      value,
-                    );
-                  },
                 ),
 
                 BlocBuilder<PasswordValidationCubit, PasswordValidationState>(

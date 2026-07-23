@@ -3,7 +3,6 @@ import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/app_text_styles.dart';
 import 'package:docdoc/core/widgets/app_main_button.dart';
-import 'package:docdoc/features/login/data/models/login_request_body.dart';
 import 'package:docdoc/features/login/logic/bloc/login_cubit.dart';
 import 'package:docdoc/features/login/ui/widgets/login_form.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<LoginCubit>();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -82,7 +82,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 40),
                 AppMainButton(
                   onPressed: () {
-                    validateLogin(context);
+                    if (cubit.formKey.currentState!.validate()) {
+                      cubit.login(
+                        email: cubit.emailController.text,
+                        password: cubit.passwordController.text,
+                      );
+                    }
                   },
                   text: "Login",
                 ),
@@ -175,18 +180,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  void validateLogin(BuildContext context) {
-    final loginCubit = context.read<LoginCubit>();
-    final bool isValid = loginCubit.formKey.currentState!.validate();
-    if (isValid) {
-      loginCubit.emitLoginStates(
-        LoginRequestBody(
-          email: loginCubit.emailController.text,
-          password: loginCubit.passwordController.text,
-        ),
-      );
-    }
   }
 }
