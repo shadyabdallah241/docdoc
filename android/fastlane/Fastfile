@@ -1,3 +1,4 @@
+
 default_platform(:android)
 
 platform :android do
@@ -13,6 +14,7 @@ platform :android do
       app: "1:464384854073:android:e2924c52c084d4b054e5e8",
       apk_path: "../build/app/outputs/flutter-apk/app-prod-release.apk"
     )
+    
   end
 
 end
