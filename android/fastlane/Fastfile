@@ -1,0 +1,20 @@
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Distribute APK to Firebase"
+
+  lane :distribute do
+    sh("flutter clean")
+    sh("flutter pub get")
+    sh("flutter build apk --release --flavor prod -t lib/main_prod.dart")
+
+    firebase_app_distribution(
+      app: "1:464384854073:android:e2924c52c084d4b054e5e8",
+      apk_path: "../build/app/outputs/flutter-apk/app-prod-release.apk"
+    )
+    
+  end
+
+end
