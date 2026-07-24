@@ -1,0 +1,39 @@
+import 'package:docdoc/core/networking/api_result.dart';
+import 'package:docdoc/features/login/data/models/login_request_body.dart';
+import 'package:docdoc/features/login/data/repos/login_repo.dart';
+import 'package:docdoc/features/login/logic/bloc/login_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class LoginCubit extends Cubit<LoginState> {
+  final LoginRepo _loginRepo;
+  LoginCubit(this._loginRepo) : super(LoginState.initial());
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  Future<void> emitLoginStates(LoginRequestBody loginRequestBody) async {
+    emit(const LoginState.loading());
+
+    final response = await _loginRepo.login(loginRequestBody);
+
+    response.when(
+      success: (loginResponse) {
+        emit(LoginState.success(loginResponse));
+      },
+      failure: (errorHandler) {
+        emit(LoginState.error(error: errorHandler.apiError.message ?? ""));
+      },
+    );
+  }
+
+  Future<void> login({required String email, required String password}) async {
+    emitLoginStates(
+      LoginRequestBody(
+        email: emailController.text,
+        password: passwordController.text,
+      ),
+    );
+  }
+}

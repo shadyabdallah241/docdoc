@@ -1,25 +1,23 @@
-import 'package:docdoc/core/helpers/extensions.dart';
-import 'package:docdoc/core/routing/routes.dart';
 import 'package:docdoc/core/theme/app_colors.dart';
 import 'package:docdoc/core/theme/app_text_styles.dart';
 import 'package:docdoc/core/widgets/app_main_button.dart';
-import 'package:docdoc/features/login/logic/bloc/login_cubit.dart';
-import 'package:docdoc/features/login/ui/widgets/login_form.dart';
+import 'package:docdoc/features/signup/logic/bloc/signup_cubit.dart';
+import 'package:docdoc/features/signup/ui/widgets/signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
+    final cubit = context.read<SignupCubit>();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -28,70 +26,45 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: .center,
               children: [
-                SizedBox(height: 36.h),
                 Column(
                   crossAxisAlignment: .start,
                   children: [
                     Text(
-                      "Welcome Back",
+                      "Create Account",
                       style: AppTextStyles.text24Bold(
                         color: AppColors.primary100,
                       ),
                     ),
                     SizedBox(height: 8),
+
                     Text(
-                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
+                      "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!",
                       style: AppTextStyles.text14Regular(
                         color: AppColors.body,
                       ).copyWith(height: 1.9),
                     ),
                   ],
                 ),
-
                 SizedBox(height: 36.h),
-                LoginForm(),
-                Row(
-                  mainAxisAlignment: .spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: true,
-                          onChanged: (value) {},
-                          side: const BorderSide(color: Colors.red, width: 2),
-                          fillColor: WidgetStateProperty.all(Colors.white),
-                          checkColor: AppColors.fillBlue,
-                        ),
-                        Text(
-                          "Remember me",
-                          style: AppTextStyles.text12Regular(
-                            color: AppColors.grey60,
-                          ),
-                        ),
-                      ],
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: AppColors.primary100,
-                      ),
-                      onPressed: () {},
-                      child: Text("Forgot Password?"),
-                    ),
-                  ],
-                ),
+                SignupForm(),
+
                 SizedBox(height: 40),
                 AppMainButton(
                   onPressed: () {
                     if (cubit.formKey.currentState!.validate()) {
-                      cubit.login(
+                      context.read<SignupCubit>().signup(
+                        name: cubit.usernameController.text,
+                        phoneNumber: cubit.phoneController.text,
                         email: cubit.emailController.text,
                         password: cubit.passwordController.text,
+                        passwordConfirmation: cubit.passwordController.text,
+                        gender: 0,
                       );
                     }
                   },
-                  text: "Login",
+                  text: "Create Account",
                 ),
-                SizedBox(height: 45),
+                SizedBox(height: 15),
                 Row(
                   spacing: 10,
                   children: [
@@ -136,7 +109,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       TextSpan(
                         text: "and ",
-
                         style: AppTextStyles.text12Regular(
                           color: AppColors.grey60,
                         ),
@@ -151,28 +123,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 25),
-                Row(
-                  mainAxisAlignment: .center,
-                  children: [
-                    Text(
-                      "Already have an account yet?",
-                      style: AppTextStyles.text12Regular(
-                        color: AppColors.grey100,
-                      ),
+                RichText(
+                  text: TextSpan(
+                    text: "Already have an account?",
+                    style: AppTextStyles.text12Regular(
+                      color: AppColors.grey100,
                     ),
-
-                    GestureDetector(
-                      onTap: () {
-                        context.pushNamed(Routes.signupScreen);
-                      },
-                      child: Text(
-                        " Sign Up",
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: " Sign In",
                         style: AppTextStyles.text12SemiBold(
                           color: AppColors.primary100,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
