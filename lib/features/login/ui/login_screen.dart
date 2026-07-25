@@ -166,7 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         context.pushNamed(Routes.signupScreen);
                       },
                       child: Text(
-                        " Sign Up",
+                        "Sign Up",
                         style: AppTextStyles.text12SemiBold(
                           color: AppColors.primary100,
                         ),
