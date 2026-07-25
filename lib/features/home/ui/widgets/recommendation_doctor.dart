@@ -52,7 +52,7 @@ class RecommendationDoctor extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "|",
+                            " | ",
                             style: AppTextStyles.text12Medium(
                               color: AppColors.body,
                             ),
@@ -66,7 +66,6 @@ class RecommendationDoctor extends StatelessWidget {
                         ],
                       ),
                       Row(
-                        spacing: 8,
                         children: [
                           Icon(Icons.star, color: Colors.amberAccent),
                           Text(
@@ -76,7 +75,7 @@ class RecommendationDoctor extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            doctorModel.reviewers.toString(),
+                            " (${doctorModel.reviewers.toString()} reviewers)",
                             style: AppTextStyles.text12Regular(
                               color: AppColors.body,
                             ),

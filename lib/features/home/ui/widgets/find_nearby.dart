@@ -29,6 +29,7 @@ class FindNearby extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
+                      elevation: WidgetStatePropertyAll(0),
                       foregroundColor: WidgetStateProperty.all(
                         AppColors.primary100,
                       ),

@@ -21,7 +21,7 @@ class HomeAppBar extends StatelessWidget {
         ),
         CircleAvatar(
           backgroundColor: AppColors.grey30,
-          child: Icon(Icons.notifications_outlined),
+          child: Badge(child: Image.asset("assets/icons/notification.png")),
         ),
       ],
     );

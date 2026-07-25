@@ -13,7 +13,7 @@ class HomeFloatingActionButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
       ),
-      child: Icon(Icons.search, color: AppColors.white),
+      child: Image.asset("assets/icons/search.png"),
     );
   }
 }

@@ -26,7 +26,9 @@ class HomeNavigationBar extends StatelessWidget {
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Image.asset("assets/icons/message.png", width: 24),
+            icon: Badge(
+              child: Image.asset("assets/icons/message.png", width: 24),
+            ),
             label: "",
           ),
           BottomNavigationBarItem(
