@@ -38,9 +38,12 @@ class OnboardingScreen extends StatelessWidget {
                         ).copyWith(height: 1.9),
                       ),
                       SizedBox(height: 15.h),
-                      AppMainButton(onPressed: () {
-                        context.pushNamed(Routes.loginScreen);
-                      }, text: 'Get Started'),
+                      AppMainButton(
+                        onPressed: () {
+                          context.pushNamed(Routes.homeScreen);
+                        },
+                        text: 'Get Started',
+                      ),
                     ],
                   ),
                 ),

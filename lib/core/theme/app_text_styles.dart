@@ -94,6 +94,22 @@ class AppTextStyles {
       _style(size: 14, weight: FontWeight.w400, color: color);
 
   // =========================
+  // Font Size 18
+  // =========================
+
+  static TextStyle text18Bold({Color color = AppColors.black}) =>
+      _style(size: 18, weight: FontWeight.bold, color: color);
+
+  static TextStyle text18SemiBold({Color color = AppColors.black}) =>
+      _style(size: 18, weight: FontWeight.w600, color: color);
+
+  static TextStyle text18Medium({Color color = AppColors.black}) =>
+      _style(size: 18, weight: FontWeight.w500, color: color);
+
+  static TextStyle text18Regular({Color color = AppColors.body}) =>
+      _style(size: 18, weight: FontWeight.w400, color: color);
+
+  // =========================
   // Font Size 12
   // =========================
 
