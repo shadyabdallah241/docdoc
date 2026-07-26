@@ -7,7 +7,7 @@ class DoctorsCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
   DoctorsCubit(this._homeRepo) : super(HomeState.initial());
 
-  Future<void> getSpecialization() async {
+  Future<void> showSpecialization() async {
     emit(HomeState.loading());
     final response = await _homeRepo.showSpecializationsData();
     response.when(

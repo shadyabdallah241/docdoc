@@ -40,7 +40,7 @@ class OnboardingScreen extends StatelessWidget {
                       SizedBox(height: 15.h),
                       AppMainButton(
                         onPressed: () {
-                          context.pushNamed(Routes.loginScreen);
+                          context.pushNamed(Routes.homeScreen);
                         },
                         text: 'Get Started',
                       ),
