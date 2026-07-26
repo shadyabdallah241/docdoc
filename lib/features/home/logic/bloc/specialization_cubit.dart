@@ -7,15 +7,19 @@ class SpecializationCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
   SpecializationCubit(this._homeRepo) : super(HomeState.initial());
 
-  Future<void> getSpecialization() async {
+  Future<void> showSpecialization() async {
+    print('showSpecialization called');
     emit(HomeState.loading());
+    print('loading emitted');
     final response = await _homeRepo.showSpecializationsData();
     response.when(
       success: (data) {
         emit(HomeState.success(data));
+        print('success emitted');
       },
       failure: (errorHandler) {
         emit(HomeState.error(error: errorHandler));
+        print('error emitted');
       },
     );
   }

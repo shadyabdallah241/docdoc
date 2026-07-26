@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AllSpecializationsResponseModel {
 
- String get message;@JsonKey(name: "data") Specialization get specialization; bool? get status; int? get code;
+ String? get message;@JsonKey(name: 'data') List<Specialization>? get specializationData; bool? get status; int? get code;
 /// Create a copy of AllSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AllSpecializationsResponseModelCopyWith<AllSpecializationsResponseModel> get co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AllSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&(identical(other.specialization, specialization) || other.specialization == specialization)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AllSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.specializationData, specializationData)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,specialization,status,code);
+int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(specializationData),status,code);
 
 @override
 String toString() {
-  return 'AllSpecializationsResponseModel(message: $message, specialization: $specialization, status: $status, code: $code)';
+  return 'AllSpecializationsResponseModel(message: $message, specializationData: $specializationData, status: $status, code: $code)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $AllSpecializationsResponseModelCopyWith<$Res>  {
   factory $AllSpecializationsResponseModelCopyWith(AllSpecializationsResponseModel value, $Res Function(AllSpecializationsResponseModel) _then) = _$AllSpecializationsResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String message,@JsonKey(name: "data") Specialization specialization, bool? status, int? code
+ String? message,@JsonKey(name: 'data') List<Specialization>? specializationData, bool? status, int? code
 });
 
 
-$SpecializationCopyWith<$Res> get specialization;
+
 
 }
 /// @nodoc
@@ -65,25 +65,16 @@ class _$AllSpecializationsResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of AllSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? specialization = null,Object? status = freezed,Object? code = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? message = freezed,Object? specializationData = freezed,Object? status = freezed,Object? code = freezed,}) {
   return _then(_self.copyWith(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,specialization: null == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
-as Specialization,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,specializationData: freezed == specializationData ? _self.specializationData : specializationData // ignore: cast_nullable_to_non_nullable
+as List<Specialization>?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
-/// Create a copy of AllSpecializationsResponseModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SpecializationCopyWith<$Res> get specialization {
-  
-  return $SpecializationCopyWith<$Res>(_self.specialization, (value) {
-    return _then(_self.copyWith(specialization: value));
-  });
-}
+
 }
 
 
@@ -165,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String message, @JsonKey(name: "data")  Specialization specialization,  bool? status,  int? code)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? message, @JsonKey(name: 'data')  List<Specialization>? specializationData,  bool? status,  int? code)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AllSpecializationsResponseModel() when $default != null:
-return $default(_that.message,_that.specialization,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   return orElse();
 
 }
@@ -186,10 +177,10 @@ return $default(_that.message,_that.specialization,_that.status,_that.code);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String message, @JsonKey(name: "data")  Specialization specialization,  bool? status,  int? code)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? message, @JsonKey(name: 'data')  List<Specialization>? specializationData,  bool? status,  int? code)  $default,) {final _that = this;
 switch (_that) {
 case _AllSpecializationsResponseModel():
-return $default(_that.message,_that.specialization,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +197,10 @@ return $default(_that.message,_that.specialization,_that.status,_that.code);case
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String message, @JsonKey(name: "data")  Specialization specialization,  bool? status,  int? code)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? message, @JsonKey(name: 'data')  List<Specialization>? specializationData,  bool? status,  int? code)?  $default,) {final _that = this;
 switch (_that) {
 case _AllSpecializationsResponseModel() when $default != null:
-return $default(_that.message,_that.specialization,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   return null;
 
 }
@@ -221,11 +212,19 @@ return $default(_that.message,_that.specialization,_that.status,_that.code);case
 @JsonSerializable()
 
 class _AllSpecializationsResponseModel implements AllSpecializationsResponseModel {
-  const _AllSpecializationsResponseModel({required this.message, @JsonKey(name: "data") required this.specialization, this.status, this.code});
+  const _AllSpecializationsResponseModel({this.message, @JsonKey(name: 'data') final  List<Specialization>? specializationData, this.status, this.code}): _specializationData = specializationData;
   factory _AllSpecializationsResponseModel.fromJson(Map<String, dynamic> json) => _$AllSpecializationsResponseModelFromJson(json);
 
-@override final  String message;
-@override@JsonKey(name: "data") final  Specialization specialization;
+@override final  String? message;
+ final  List<Specialization>? _specializationData;
+@override@JsonKey(name: 'data') List<Specialization>? get specializationData {
+  final value = _specializationData;
+  if (value == null) return null;
+  if (_specializationData is EqualUnmodifiableListView) return _specializationData;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 @override final  bool? status;
 @override final  int? code;
 
@@ -242,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AllSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&(identical(other.specialization, specialization) || other.specialization == specialization)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AllSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other._specializationData, _specializationData)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,specialization,status,code);
+int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(_specializationData),status,code);
 
 @override
 String toString() {
-  return 'AllSpecializationsResponseModel(message: $message, specialization: $specialization, status: $status, code: $code)';
+  return 'AllSpecializationsResponseModel(message: $message, specializationData: $specializationData, status: $status, code: $code)';
 }
 
 
@@ -262,11 +261,11 @@ abstract mixin class _$AllSpecializationsResponseModelCopyWith<$Res> implements 
   factory _$AllSpecializationsResponseModelCopyWith(_AllSpecializationsResponseModel value, $Res Function(_AllSpecializationsResponseModel) _then) = __$AllSpecializationsResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String message,@JsonKey(name: "data") Specialization specialization, bool? status, int? code
+ String? message,@JsonKey(name: 'data') List<Specialization>? specializationData, bool? status, int? code
 });
 
 
-@override $SpecializationCopyWith<$Res> get specialization;
+
 
 }
 /// @nodoc
@@ -279,33 +278,24 @@ class __$AllSpecializationsResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of AllSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? specialization = null,Object? status = freezed,Object? code = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? message = freezed,Object? specializationData = freezed,Object? status = freezed,Object? code = freezed,}) {
   return _then(_AllSpecializationsResponseModel(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,specialization: null == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
-as Specialization,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,specializationData: freezed == specializationData ? _self._specializationData : specializationData // ignore: cast_nullable_to_non_nullable
+as List<Specialization>?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
 
-/// Create a copy of AllSpecializationsResponseModel
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SpecializationCopyWith<$Res> get specialization {
-  
-  return $SpecializationCopyWith<$Res>(_self.specialization, (value) {
-    return _then(_self.copyWith(specialization: value));
-  });
-}
+
 }
 
 
 /// @nodoc
 mixin _$ShowSpecializationsResponseModel {
 
- String get message;@JsonKey(name: "data") List<Specialization> get specializations; bool? get status; int? get code;
+ String? get message;@JsonKey(name: 'data') Specialization? get specializationData; bool? get status; int? get code;
 /// Create a copy of ShowSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,16 +308,16 @@ $ShowSpecializationsResponseModelCopyWith<ShowSpecializationsResponseModel> get 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.specializations, specializations)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShowSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&(identical(other.specializationData, specializationData) || other.specializationData == specializationData)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(specializations),status,code);
+int get hashCode => Object.hash(runtimeType,message,specializationData,status,code);
 
 @override
 String toString() {
-  return 'ShowSpecializationsResponseModel(message: $message, specializations: $specializations, status: $status, code: $code)';
+  return 'ShowSpecializationsResponseModel(message: $message, specializationData: $specializationData, status: $status, code: $code)';
 }
 
 
@@ -338,11 +328,11 @@ abstract mixin class $ShowSpecializationsResponseModelCopyWith<$Res>  {
   factory $ShowSpecializationsResponseModelCopyWith(ShowSpecializationsResponseModel value, $Res Function(ShowSpecializationsResponseModel) _then) = _$ShowSpecializationsResponseModelCopyWithImpl;
 @useResult
 $Res call({
- String message,@JsonKey(name: "data") List<Specialization> specializations, bool? status, int? code
+ String? message,@JsonKey(name: 'data') Specialization? specializationData, bool? status, int? code
 });
 
 
-
+$SpecializationCopyWith<$Res>? get specializationData;
 
 }
 /// @nodoc
@@ -355,16 +345,28 @@ class _$ShowSpecializationsResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of ShowSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? message = null,Object? specializations = null,Object? status = freezed,Object? code = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? message = freezed,Object? specializationData = freezed,Object? status = freezed,Object? code = freezed,}) {
   return _then(_self.copyWith(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,specializations: null == specializations ? _self.specializations : specializations // ignore: cast_nullable_to_non_nullable
-as List<Specialization>,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,specializationData: freezed == specializationData ? _self.specializationData : specializationData // ignore: cast_nullable_to_non_nullable
+as Specialization?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
+/// Create a copy of ShowSpecializationsResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SpecializationCopyWith<$Res>? get specializationData {
+    if (_self.specializationData == null) {
+    return null;
+  }
 
+  return $SpecializationCopyWith<$Res>(_self.specializationData!, (value) {
+    return _then(_self.copyWith(specializationData: value));
+  });
+}
 }
 
 
@@ -446,10 +448,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String message, @JsonKey(name: "data")  List<Specialization> specializations,  bool? status,  int? code)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? message, @JsonKey(name: 'data')  Specialization? specializationData,  bool? status,  int? code)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ShowSpecializationsResponseModel() when $default != null:
-return $default(_that.message,_that.specializations,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   return orElse();
 
 }
@@ -467,10 +469,10 @@ return $default(_that.message,_that.specializations,_that.status,_that.code);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String message, @JsonKey(name: "data")  List<Specialization> specializations,  bool? status,  int? code)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? message, @JsonKey(name: 'data')  Specialization? specializationData,  bool? status,  int? code)  $default,) {final _that = this;
 switch (_that) {
 case _ShowSpecializationsResponseModel():
-return $default(_that.message,_that.specializations,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -487,10 +489,10 @@ return $default(_that.message,_that.specializations,_that.status,_that.code);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String message, @JsonKey(name: "data")  List<Specialization> specializations,  bool? status,  int? code)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? message, @JsonKey(name: 'data')  Specialization? specializationData,  bool? status,  int? code)?  $default,) {final _that = this;
 switch (_that) {
 case _ShowSpecializationsResponseModel() when $default != null:
-return $default(_that.message,_that.specializations,_that.status,_that.code);case _:
+return $default(_that.message,_that.specializationData,_that.status,_that.code);case _:
   return null;
 
 }
@@ -502,17 +504,11 @@ return $default(_that.message,_that.specializations,_that.status,_that.code);cas
 @JsonSerializable()
 
 class _ShowSpecializationsResponseModel implements ShowSpecializationsResponseModel {
-  const _ShowSpecializationsResponseModel({required this.message, @JsonKey(name: "data") required final  List<Specialization> specializations, this.status, this.code}): _specializations = specializations;
+  const _ShowSpecializationsResponseModel({this.message, @JsonKey(name: 'data') this.specializationData, this.status, this.code});
   factory _ShowSpecializationsResponseModel.fromJson(Map<String, dynamic> json) => _$ShowSpecializationsResponseModelFromJson(json);
 
-@override final  String message;
- final  List<Specialization> _specializations;
-@override@JsonKey(name: "data") List<Specialization> get specializations {
-  if (_specializations is EqualUnmodifiableListView) return _specializations;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_specializations);
-}
-
+@override final  String? message;
+@override@JsonKey(name: 'data') final  Specialization? specializationData;
 @override final  bool? status;
 @override final  int? code;
 
@@ -529,16 +525,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other._specializations, _specializations)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShowSpecializationsResponseModel&&(identical(other.message, message) || other.message == message)&&(identical(other.specializationData, specializationData) || other.specializationData == specializationData)&&(identical(other.status, status) || other.status == status)&&(identical(other.code, code) || other.code == code));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(_specializations),status,code);
+int get hashCode => Object.hash(runtimeType,message,specializationData,status,code);
 
 @override
 String toString() {
-  return 'ShowSpecializationsResponseModel(message: $message, specializations: $specializations, status: $status, code: $code)';
+  return 'ShowSpecializationsResponseModel(message: $message, specializationData: $specializationData, status: $status, code: $code)';
 }
 
 
@@ -549,11 +545,11 @@ abstract mixin class _$ShowSpecializationsResponseModelCopyWith<$Res> implements
   factory _$ShowSpecializationsResponseModelCopyWith(_ShowSpecializationsResponseModel value, $Res Function(_ShowSpecializationsResponseModel) _then) = __$ShowSpecializationsResponseModelCopyWithImpl;
 @override @useResult
 $Res call({
- String message,@JsonKey(name: "data") List<Specialization> specializations, bool? status, int? code
+ String? message,@JsonKey(name: 'data') Specialization? specializationData, bool? status, int? code
 });
 
 
-
+@override $SpecializationCopyWith<$Res>? get specializationData;
 
 }
 /// @nodoc
@@ -566,24 +562,36 @@ class __$ShowSpecializationsResponseModelCopyWithImpl<$Res>
 
 /// Create a copy of ShowSpecializationsResponseModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? specializations = null,Object? status = freezed,Object? code = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? message = freezed,Object? specializationData = freezed,Object? status = freezed,Object? code = freezed,}) {
   return _then(_ShowSpecializationsResponseModel(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,specializations: null == specializations ? _self._specializations : specializations // ignore: cast_nullable_to_non_nullable
-as List<Specialization>,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+message: freezed == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String?,specializationData: freezed == specializationData ? _self.specializationData : specializationData // ignore: cast_nullable_to_non_nullable
+as Specialization?,status: freezed == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
 }
 
+/// Create a copy of ShowSpecializationsResponseModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SpecializationCopyWith<$Res>? get specializationData {
+    if (_self.specializationData == null) {
+    return null;
+  }
 
+  return $SpecializationCopyWith<$Res>(_self.specializationData!, (value) {
+    return _then(_self.copyWith(specializationData: value));
+  });
+}
 }
 
 
 /// @nodoc
 mixin _$Doctor {
 
- int get id; String get name; String get email; String get phone; String get photo; String get gender; String get address; String get description; String get degree; Specialization get specialization; City get city;@JsonKey(name: 'appoint_price') int get appointPrice;@JsonKey(name: 'start_time') String get startTime;@JsonKey(name: 'end_time') String get endTime;
+ int? get id; String? get name; String? get email; String? get phone; String? get photo; String? get gender; String? get address; String? get description; String? get degree; Specialization? get specialization; City? get city;@JsonKey(name: 'appoint_price') int? get appointPrice;@JsonKey(name: 'start_time') String? get startTime;@JsonKey(name: 'end_time') String? get endTime;
 /// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -616,11 +624,11 @@ abstract mixin class $DoctorCopyWith<$Res>  {
   factory $DoctorCopyWith(Doctor value, $Res Function(Doctor) _then) = _$DoctorCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String email, String phone, String photo, String gender, String address, String description, String degree, Specialization specialization, City city,@JsonKey(name: 'appoint_price') int appointPrice,@JsonKey(name: 'start_time') String startTime,@JsonKey(name: 'end_time') String endTime
+ int? id, String? name, String? email, String? phone, String? photo, String? gender, String? address, String? description, String? degree, Specialization? specialization, City? city,@JsonKey(name: 'appoint_price') int? appointPrice,@JsonKey(name: 'start_time') String? startTime,@JsonKey(name: 'end_time') String? endTime
 });
 
 
-$SpecializationCopyWith<$Res> get specialization;$CityCopyWith<$Res> get city;
+$SpecializationCopyWith<$Res>? get specialization;$CityCopyWith<$Res>? get city;
 
 }
 /// @nodoc
@@ -633,41 +641,47 @@ class _$DoctorCopyWithImpl<$Res>
 
 /// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phone = null,Object? photo = null,Object? gender = null,Object? address = null,Object? description = null,Object? degree = null,Object? specialization = null,Object? city = null,Object? appointPrice = null,Object? startTime = null,Object? endTime = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? email = freezed,Object? phone = freezed,Object? photo = freezed,Object? gender = freezed,Object? address = freezed,Object? description = freezed,Object? degree = freezed,Object? specialization = freezed,Object? city = freezed,Object? appointPrice = freezed,Object? startTime = freezed,Object? endTime = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
-as String,photo: null == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
-as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as String,address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,degree: null == degree ? _self.degree : degree // ignore: cast_nullable_to_non_nullable
-as String,specialization: null == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
-as Specialization,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
-as City,appointPrice: null == appointPrice ? _self.appointPrice : appointPrice // ignore: cast_nullable_to_non_nullable
-as int,startTime: null == startTime ? _self.startTime : startTime // ignore: cast_nullable_to_non_nullable
-as String,endTime: null == endTime ? _self.endTime : endTime // ignore: cast_nullable_to_non_nullable
-as String,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
+as String?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,degree: freezed == degree ? _self.degree : degree // ignore: cast_nullable_to_non_nullable
+as String?,specialization: freezed == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
+as Specialization?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as City?,appointPrice: freezed == appointPrice ? _self.appointPrice : appointPrice // ignore: cast_nullable_to_non_nullable
+as int?,startTime: freezed == startTime ? _self.startTime : startTime // ignore: cast_nullable_to_non_nullable
+as String?,endTime: freezed == endTime ? _self.endTime : endTime // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 /// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$SpecializationCopyWith<$Res> get specialization {
-  
-  return $SpecializationCopyWith<$Res>(_self.specialization, (value) {
+$SpecializationCopyWith<$Res>? get specialization {
+    if (_self.specialization == null) {
+    return null;
+  }
+
+  return $SpecializationCopyWith<$Res>(_self.specialization!, (value) {
     return _then(_self.copyWith(specialization: value));
   });
 }/// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CityCopyWith<$Res> get city {
-  
-  return $CityCopyWith<$Res>(_self.city, (value) {
+$CityCopyWith<$Res>? get city {
+    if (_self.city == null) {
+    return null;
+  }
+
+  return $CityCopyWith<$Res>(_self.city!, (value) {
     return _then(_self.copyWith(city: value));
   });
 }
@@ -752,7 +766,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String email,  String phone,  String photo,  String gender,  String address,  String description,  String degree,  Specialization specialization,  City city, @JsonKey(name: 'appoint_price')  int appointPrice, @JsonKey(name: 'start_time')  String startTime, @JsonKey(name: 'end_time')  String endTime)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? name,  String? email,  String? phone,  String? photo,  String? gender,  String? address,  String? description,  String? degree,  Specialization? specialization,  City? city, @JsonKey(name: 'appoint_price')  int? appointPrice, @JsonKey(name: 'start_time')  String? startTime, @JsonKey(name: 'end_time')  String? endTime)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Doctor() when $default != null:
 return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.gender,_that.address,_that.description,_that.degree,_that.specialization,_that.city,_that.appointPrice,_that.startTime,_that.endTime);case _:
@@ -773,7 +787,7 @@ return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String email,  String phone,  String photo,  String gender,  String address,  String description,  String degree,  Specialization specialization,  City city, @JsonKey(name: 'appoint_price')  int appointPrice, @JsonKey(name: 'start_time')  String startTime, @JsonKey(name: 'end_time')  String endTime)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? name,  String? email,  String? phone,  String? photo,  String? gender,  String? address,  String? description,  String? degree,  Specialization? specialization,  City? city, @JsonKey(name: 'appoint_price')  int? appointPrice, @JsonKey(name: 'start_time')  String? startTime, @JsonKey(name: 'end_time')  String? endTime)  $default,) {final _that = this;
 switch (_that) {
 case _Doctor():
 return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.gender,_that.address,_that.description,_that.degree,_that.specialization,_that.city,_that.appointPrice,_that.startTime,_that.endTime);case _:
@@ -793,7 +807,7 @@ return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String email,  String phone,  String photo,  String gender,  String address,  String description,  String degree,  Specialization specialization,  City city, @JsonKey(name: 'appoint_price')  int appointPrice, @JsonKey(name: 'start_time')  String startTime, @JsonKey(name: 'end_time')  String endTime)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? name,  String? email,  String? phone,  String? photo,  String? gender,  String? address,  String? description,  String? degree,  Specialization? specialization,  City? city, @JsonKey(name: 'appoint_price')  int? appointPrice, @JsonKey(name: 'start_time')  String? startTime, @JsonKey(name: 'end_time')  String? endTime)?  $default,) {final _that = this;
 switch (_that) {
 case _Doctor() when $default != null:
 return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.gender,_that.address,_that.description,_that.degree,_that.specialization,_that.city,_that.appointPrice,_that.startTime,_that.endTime);case _:
@@ -808,23 +822,23 @@ return $default(_that.id,_that.name,_that.email,_that.phone,_that.photo,_that.ge
 @JsonSerializable()
 
 class _Doctor implements Doctor {
-  const _Doctor({required this.id, required this.name, required this.email, required this.phone, required this.photo, required this.gender, required this.address, required this.description, required this.degree, required this.specialization, required this.city, @JsonKey(name: 'appoint_price') required this.appointPrice, @JsonKey(name: 'start_time') required this.startTime, @JsonKey(name: 'end_time') required this.endTime});
+  const _Doctor({this.id, this.name, this.email, this.phone, this.photo, this.gender, this.address, this.description, this.degree, this.specialization, this.city, @JsonKey(name: 'appoint_price') this.appointPrice, @JsonKey(name: 'start_time') this.startTime, @JsonKey(name: 'end_time') this.endTime});
   factory _Doctor.fromJson(Map<String, dynamic> json) => _$DoctorFromJson(json);
 
-@override final  int id;
-@override final  String name;
-@override final  String email;
-@override final  String phone;
-@override final  String photo;
-@override final  String gender;
-@override final  String address;
-@override final  String description;
-@override final  String degree;
-@override final  Specialization specialization;
-@override final  City city;
-@override@JsonKey(name: 'appoint_price') final  int appointPrice;
-@override@JsonKey(name: 'start_time') final  String startTime;
-@override@JsonKey(name: 'end_time') final  String endTime;
+@override final  int? id;
+@override final  String? name;
+@override final  String? email;
+@override final  String? phone;
+@override final  String? photo;
+@override final  String? gender;
+@override final  String? address;
+@override final  String? description;
+@override final  String? degree;
+@override final  Specialization? specialization;
+@override final  City? city;
+@override@JsonKey(name: 'appoint_price') final  int? appointPrice;
+@override@JsonKey(name: 'start_time') final  String? startTime;
+@override@JsonKey(name: 'end_time') final  String? endTime;
 
 /// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
@@ -859,11 +873,11 @@ abstract mixin class _$DoctorCopyWith<$Res> implements $DoctorCopyWith<$Res> {
   factory _$DoctorCopyWith(_Doctor value, $Res Function(_Doctor) _then) = __$DoctorCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String email, String phone, String photo, String gender, String address, String description, String degree, Specialization specialization, City city,@JsonKey(name: 'appoint_price') int appointPrice,@JsonKey(name: 'start_time') String startTime,@JsonKey(name: 'end_time') String endTime
+ int? id, String? name, String? email, String? phone, String? photo, String? gender, String? address, String? description, String? degree, Specialization? specialization, City? city,@JsonKey(name: 'appoint_price') int? appointPrice,@JsonKey(name: 'start_time') String? startTime,@JsonKey(name: 'end_time') String? endTime
 });
 
 
-@override $SpecializationCopyWith<$Res> get specialization;@override $CityCopyWith<$Res> get city;
+@override $SpecializationCopyWith<$Res>? get specialization;@override $CityCopyWith<$Res>? get city;
 
 }
 /// @nodoc
@@ -876,23 +890,23 @@ class __$DoctorCopyWithImpl<$Res>
 
 /// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? phone = null,Object? photo = null,Object? gender = null,Object? address = null,Object? description = null,Object? degree = null,Object? specialization = null,Object? city = null,Object? appointPrice = null,Object? startTime = null,Object? endTime = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = freezed,Object? email = freezed,Object? phone = freezed,Object? photo = freezed,Object? gender = freezed,Object? address = freezed,Object? description = freezed,Object? degree = freezed,Object? specialization = freezed,Object? city = freezed,Object? appointPrice = freezed,Object? startTime = freezed,Object? endTime = freezed,}) {
   return _then(_Doctor(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
-as String,photo: null == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
-as String,gender: null == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
-as String,address: null == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
-as String,description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
-as String,degree: null == degree ? _self.degree : degree // ignore: cast_nullable_to_non_nullable
-as String,specialization: null == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
-as Specialization,city: null == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
-as City,appointPrice: null == appointPrice ? _self.appointPrice : appointPrice // ignore: cast_nullable_to_non_nullable
-as int,startTime: null == startTime ? _self.startTime : startTime // ignore: cast_nullable_to_non_nullable
-as String,endTime: null == endTime ? _self.endTime : endTime // ignore: cast_nullable_to_non_nullable
-as String,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,photo: freezed == photo ? _self.photo : photo // ignore: cast_nullable_to_non_nullable
+as String?,gender: freezed == gender ? _self.gender : gender // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,degree: freezed == degree ? _self.degree : degree // ignore: cast_nullable_to_non_nullable
+as String?,specialization: freezed == specialization ? _self.specialization : specialization // ignore: cast_nullable_to_non_nullable
+as Specialization?,city: freezed == city ? _self.city : city // ignore: cast_nullable_to_non_nullable
+as City?,appointPrice: freezed == appointPrice ? _self.appointPrice : appointPrice // ignore: cast_nullable_to_non_nullable
+as int?,startTime: freezed == startTime ? _self.startTime : startTime // ignore: cast_nullable_to_non_nullable
+as String?,endTime: freezed == endTime ? _self.endTime : endTime // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -900,18 +914,24 @@ as String,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$SpecializationCopyWith<$Res> get specialization {
-  
-  return $SpecializationCopyWith<$Res>(_self.specialization, (value) {
+$SpecializationCopyWith<$Res>? get specialization {
+    if (_self.specialization == null) {
+    return null;
+  }
+
+  return $SpecializationCopyWith<$Res>(_self.specialization!, (value) {
     return _then(_self.copyWith(specialization: value));
   });
 }/// Create a copy of Doctor
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CityCopyWith<$Res> get city {
-  
-  return $CityCopyWith<$Res>(_self.city, (value) {
+$CityCopyWith<$Res>? get city {
+    if (_self.city == null) {
+    return null;
+  }
+
+  return $CityCopyWith<$Res>(_self.city!, (value) {
     return _then(_self.copyWith(city: value));
   });
 }
@@ -921,7 +941,7 @@ $CityCopyWith<$Res> get city {
 /// @nodoc
 mixin _$Specialization {
 
- int get id; String get name; List<Doctor> get doctors;
+ int? get id; String? get name;@JsonKey(name: 'doctors_list') List<Doctor>? get doctors;
 /// Create a copy of Specialization
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -954,7 +974,7 @@ abstract mixin class $SpecializationCopyWith<$Res>  {
   factory $SpecializationCopyWith(Specialization value, $Res Function(Specialization) _then) = _$SpecializationCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, List<Doctor> doctors
+ int? id, String? name,@JsonKey(name: 'doctors_list') List<Doctor>? doctors
 });
 
 
@@ -971,12 +991,12 @@ class _$SpecializationCopyWithImpl<$Res>
 
 /// Create a copy of Specialization
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? doctors = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? doctors = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,doctors: null == doctors ? _self.doctors : doctors // ignore: cast_nullable_to_non_nullable
-as List<Doctor>,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,doctors: freezed == doctors ? _self.doctors : doctors // ignore: cast_nullable_to_non_nullable
+as List<Doctor>?,
   ));
 }
 
@@ -1061,7 +1081,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  List<Doctor> doctors)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? name, @JsonKey(name: 'doctors_list')  List<Doctor>? doctors)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Specialization() when $default != null:
 return $default(_that.id,_that.name,_that.doctors);case _:
@@ -1082,7 +1102,7 @@ return $default(_that.id,_that.name,_that.doctors);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  List<Doctor> doctors)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? name, @JsonKey(name: 'doctors_list')  List<Doctor>? doctors)  $default,) {final _that = this;
 switch (_that) {
 case _Specialization():
 return $default(_that.id,_that.name,_that.doctors);case _:
@@ -1102,7 +1122,7 @@ return $default(_that.id,_that.name,_that.doctors);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  List<Doctor> doctors)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? name, @JsonKey(name: 'doctors_list')  List<Doctor>? doctors)?  $default,) {final _that = this;
 switch (_that) {
 case _Specialization() when $default != null:
 return $default(_that.id,_that.name,_that.doctors);case _:
@@ -1117,16 +1137,18 @@ return $default(_that.id,_that.name,_that.doctors);case _:
 @JsonSerializable()
 
 class _Specialization implements Specialization {
-  const _Specialization({required this.id, required this.name, required final  List<Doctor> doctors}): _doctors = doctors;
+  const _Specialization({this.id, this.name, @JsonKey(name: 'doctors_list') final  List<Doctor>? doctors}): _doctors = doctors;
   factory _Specialization.fromJson(Map<String, dynamic> json) => _$SpecializationFromJson(json);
 
-@override final  int id;
-@override final  String name;
- final  List<Doctor> _doctors;
-@override List<Doctor> get doctors {
+@override final  int? id;
+@override final  String? name;
+ final  List<Doctor>? _doctors;
+@override@JsonKey(name: 'doctors_list') List<Doctor>? get doctors {
+  final value = _doctors;
+  if (value == null) return null;
   if (_doctors is EqualUnmodifiableListView) return _doctors;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_doctors);
+  return EqualUnmodifiableListView(value);
 }
 
 
@@ -1163,7 +1185,7 @@ abstract mixin class _$SpecializationCopyWith<$Res> implements $SpecializationCo
   factory _$SpecializationCopyWith(_Specialization value, $Res Function(_Specialization) _then) = __$SpecializationCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, List<Doctor> doctors
+ int? id, String? name,@JsonKey(name: 'doctors_list') List<Doctor>? doctors
 });
 
 
@@ -1180,12 +1202,12 @@ class __$SpecializationCopyWithImpl<$Res>
 
 /// Create a copy of Specialization
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? doctors = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = freezed,Object? doctors = freezed,}) {
   return _then(_Specialization(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,doctors: null == doctors ? _self._doctors : doctors // ignore: cast_nullable_to_non_nullable
-as List<Doctor>,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,doctors: freezed == doctors ? _self._doctors : doctors // ignore: cast_nullable_to_non_nullable
+as List<Doctor>?,
   ));
 }
 
@@ -1196,7 +1218,7 @@ as List<Doctor>,
 /// @nodoc
 mixin _$City {
 
- int get id; String get name;@JsonKey(name: "governrate") Governorate get governorate;
+ int? get id; String? get name;@JsonKey(name: 'governrate') Governorate? get governorate;
 /// Create a copy of City
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1229,11 +1251,11 @@ abstract mixin class $CityCopyWith<$Res>  {
   factory $CityCopyWith(City value, $Res Function(City) _then) = _$CityCopyWithImpl;
 @useResult
 $Res call({
- int id, String name,@JsonKey(name: "governrate") Governorate governorate
+ int? id, String? name,@JsonKey(name: 'governrate') Governorate? governorate
 });
 
 
-$GovernorateCopyWith<$Res> get governorate;
+$GovernorateCopyWith<$Res>? get governorate;
 
 }
 /// @nodoc
@@ -1246,21 +1268,24 @@ class _$CityCopyWithImpl<$Res>
 
 /// Create a copy of City
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? governorate = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,Object? governorate = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,governorate: null == governorate ? _self.governorate : governorate // ignore: cast_nullable_to_non_nullable
-as Governorate,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,governorate: freezed == governorate ? _self.governorate : governorate // ignore: cast_nullable_to_non_nullable
+as Governorate?,
   ));
 }
 /// Create a copy of City
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$GovernorateCopyWith<$Res> get governorate {
-  
-  return $GovernorateCopyWith<$Res>(_self.governorate, (value) {
+$GovernorateCopyWith<$Res>? get governorate {
+    if (_self.governorate == null) {
+    return null;
+  }
+
+  return $GovernorateCopyWith<$Res>(_self.governorate!, (value) {
     return _then(_self.copyWith(governorate: value));
   });
 }
@@ -1345,7 +1370,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: "governrate")  Governorate governorate)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? name, @JsonKey(name: 'governrate')  Governorate? governorate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _City() when $default != null:
 return $default(_that.id,_that.name,_that.governorate);case _:
@@ -1366,7 +1391,7 @@ return $default(_that.id,_that.name,_that.governorate);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name, @JsonKey(name: "governrate")  Governorate governorate)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? name, @JsonKey(name: 'governrate')  Governorate? governorate)  $default,) {final _that = this;
 switch (_that) {
 case _City():
 return $default(_that.id,_that.name,_that.governorate);case _:
@@ -1386,7 +1411,7 @@ return $default(_that.id,_that.name,_that.governorate);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name, @JsonKey(name: "governrate")  Governorate governorate)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? name, @JsonKey(name: 'governrate')  Governorate? governorate)?  $default,) {final _that = this;
 switch (_that) {
 case _City() when $default != null:
 return $default(_that.id,_that.name,_that.governorate);case _:
@@ -1401,12 +1426,12 @@ return $default(_that.id,_that.name,_that.governorate);case _:
 @JsonSerializable()
 
 class _City implements City {
-  const _City({required this.id, required this.name, @JsonKey(name: "governrate") required this.governorate});
+  const _City({this.id, this.name, @JsonKey(name: 'governrate') this.governorate});
   factory _City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
 
-@override final  int id;
-@override final  String name;
-@override@JsonKey(name: "governrate") final  Governorate governorate;
+@override final  int? id;
+@override final  String? name;
+@override@JsonKey(name: 'governrate') final  Governorate? governorate;
 
 /// Create a copy of City
 /// with the given fields replaced by the non-null parameter values.
@@ -1441,11 +1466,11 @@ abstract mixin class _$CityCopyWith<$Res> implements $CityCopyWith<$Res> {
   factory _$CityCopyWith(_City value, $Res Function(_City) _then) = __$CityCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name,@JsonKey(name: "governrate") Governorate governorate
+ int? id, String? name,@JsonKey(name: 'governrate') Governorate? governorate
 });
 
 
-@override $GovernorateCopyWith<$Res> get governorate;
+@override $GovernorateCopyWith<$Res>? get governorate;
 
 }
 /// @nodoc
@@ -1458,12 +1483,12 @@ class __$CityCopyWithImpl<$Res>
 
 /// Create a copy of City
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? governorate = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = freezed,Object? governorate = freezed,}) {
   return _then(_City(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,governorate: null == governorate ? _self.governorate : governorate // ignore: cast_nullable_to_non_nullable
-as Governorate,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,governorate: freezed == governorate ? _self.governorate : governorate // ignore: cast_nullable_to_non_nullable
+as Governorate?,
   ));
 }
 
@@ -1471,9 +1496,12 @@ as Governorate,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$GovernorateCopyWith<$Res> get governorate {
-  
-  return $GovernorateCopyWith<$Res>(_self.governorate, (value) {
+$GovernorateCopyWith<$Res>? get governorate {
+    if (_self.governorate == null) {
+    return null;
+  }
+
+  return $GovernorateCopyWith<$Res>(_self.governorate!, (value) {
     return _then(_self.copyWith(governorate: value));
   });
 }
@@ -1483,7 +1511,7 @@ $GovernorateCopyWith<$Res> get governorate {
 /// @nodoc
 mixin _$Governorate {
 
- int get id; String get name;
+ int? get id; String? get name;
 /// Create a copy of Governorate
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1516,7 +1544,7 @@ abstract mixin class $GovernorateCopyWith<$Res>  {
   factory $GovernorateCopyWith(Governorate value, $Res Function(Governorate) _then) = _$GovernorateCopyWithImpl;
 @useResult
 $Res call({
- int id, String name
+ int? id, String? name
 });
 
 
@@ -1533,11 +1561,11 @@ class _$GovernorateCopyWithImpl<$Res>
 
 /// Create a copy of Governorate
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -1622,7 +1650,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String? name)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Governorate() when $default != null:
 return $default(_that.id,_that.name);case _:
@@ -1643,7 +1671,7 @@ return $default(_that.id,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String? name)  $default,) {final _that = this;
 switch (_that) {
 case _Governorate():
 return $default(_that.id,_that.name);case _:
@@ -1663,7 +1691,7 @@ return $default(_that.id,_that.name);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String? name)?  $default,) {final _that = this;
 switch (_that) {
 case _Governorate() when $default != null:
 return $default(_that.id,_that.name);case _:
@@ -1678,11 +1706,11 @@ return $default(_that.id,_that.name);case _:
 @JsonSerializable()
 
 class _Governorate implements Governorate {
-  const _Governorate({required this.id, required this.name});
+  const _Governorate({this.id, this.name});
   factory _Governorate.fromJson(Map<String, dynamic> json) => _$GovernorateFromJson(json);
 
-@override final  int id;
-@override final  String name;
+@override final  int? id;
+@override final  String? name;
 
 /// Create a copy of Governorate
 /// with the given fields replaced by the non-null parameter values.
@@ -1717,7 +1745,7 @@ abstract mixin class _$GovernorateCopyWith<$Res> implements $GovernorateCopyWith
   factory _$GovernorateCopyWith(_Governorate value, $Res Function(_Governorate) _then) = __$GovernorateCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name
+ int? id, String? name
 });
 
 
@@ -1734,11 +1762,11 @@ class __$GovernorateCopyWithImpl<$Res>
 
 /// Create a copy of Governorate
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = freezed,}) {
   return _then(_Governorate(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
