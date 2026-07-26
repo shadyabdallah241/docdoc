@@ -50,12 +50,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<SignupResponse> signup(Map<String, dynamic> loginRequestBody) async {
+  Future<SignupResponse> signup(Map<String, dynamic> signupRequestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(loginRequestBody);
+    _data.addAll(signupRequestBody);
     final _options = _setStreamType<SignupResponse>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
