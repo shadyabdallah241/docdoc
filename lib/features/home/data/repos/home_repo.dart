@@ -6,10 +6,10 @@ import 'package:docdoc/features/home/data/models/specializations_response_model.
 class HomeRepo {
   final HomeApiService _homeApiService;
   HomeRepo(this._homeApiService);
-  Future<ApiResult<SpecializationsResponseModel>>
-  getSpecializationsData() async {
+  Future<ApiResult<ShowSpecializationsResponseModel>>
+  showSpecializationsData() async {
     try {
-      final response = await _homeApiService.getSpecializationsData();
+      final response = await _homeApiService.showSpecializationsData();
       return ApiResult.success(response);
     } catch (error) {
       final errorHandler = ErrorHandler.handle(error);

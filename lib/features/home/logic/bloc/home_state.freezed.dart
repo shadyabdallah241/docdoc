@@ -128,12 +128,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( T data)?  success,TResult Function( ErrorHandler error)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( T homeData)?  success,TResult Function( ErrorHandler error)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.data);case Error() when error != null:
+return success(_that.homeData);case Error() when error != null:
 return error(_that.error);case _:
   return orElse();
 
@@ -152,12 +152,12 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( T data)  success,required TResult Function( ErrorHandler error)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( T homeData)  success,required TResult Function( ErrorHandler error)  error,}) {final _that = this;
 switch (_that) {
 case Initial():
 return initial();case Loading():
 return loading();case Success():
-return success(_that.data);case Error():
+return success(_that.homeData);case Error():
 return error(_that.error);case _:
   throw StateError('Unexpected subclass');
 
@@ -175,12 +175,12 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( T data)?  success,TResult? Function( ErrorHandler error)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( T homeData)?  success,TResult? Function( ErrorHandler error)?  error,}) {final _that = this;
 switch (_that) {
 case Initial() when initial != null:
 return initial();case Loading() when loading != null:
 return loading();case Success() when success != null:
-return success(_that.data);case Error() when error != null:
+return success(_that.homeData);case Error() when error != null:
 return error(_that.error);case _:
   return null;
 
@@ -257,10 +257,10 @@ String toString() {
 
 
 class Success<T> implements HomeState<T> {
-  const Success(this.data);
+  const Success(this.homeData);
   
 
- final  T data;
+ final  T homeData;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -272,16 +272,16 @@ $SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&const DeepCollectionEquality().equals(other.homeData, homeData));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(homeData));
 
 @override
 String toString() {
-  return 'HomeState<$T>.success(data: $data)';
+  return 'HomeState<$T>.success(homeData: $homeData)';
 }
 
 
@@ -292,7 +292,7 @@ abstract mixin class $SuccessCopyWith<T,$Res> implements $HomeStateCopyWith<T, $
   factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) _then) = _$SuccessCopyWithImpl;
 @useResult
 $Res call({
- T data
+ T homeData
 });
 
 
@@ -309,9 +309,9 @@ class _$SuccessCopyWithImpl<T,$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? data = freezed,}) {
+@pragma('vm:prefer-inline') $Res call({Object? homeData = freezed,}) {
   return _then(Success<T>(
-freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+freezed == homeData ? _self.homeData : homeData // ignore: cast_nullable_to_non_nullable
 as T,
   ));
 }

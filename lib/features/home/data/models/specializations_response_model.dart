@@ -3,56 +3,32 @@ part 'specializations_response_model.freezed.dart';
 part 'specializations_response_model.g.dart';
 
 @freezed
-abstract class SpecializationsResponseModel
-    with _$SpecializationsResponseModel {
-  const factory SpecializationsResponseModel({
+abstract class AllSpecializationsResponseModel
+    with _$AllSpecializationsResponseModel {
+  const factory AllSpecializationsResponseModel({
     required String message,
-    required SpecializationData specializationData,
-    required bool status,
-    required int code,
-  }) = _SpecializationsResponseModel;
+    @JsonKey(name: "data") required Specialization specialization,
+    bool? status,
+    int? code,
+  }) = _AllSpecializationsResponseModel;
 
-  factory SpecializationsResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$SpecializationsResponseModelFromJson(json);
+  factory AllSpecializationsResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$AllSpecializationsResponseModelFromJson(json);
 }
 
 @freezed
-abstract class Governorate with _$Governorate {
-  const factory Governorate({required int id, required String name}) =
-      _Governorate;
-  factory Governorate.fromJson(Map<String, dynamic> json) =>
-      _$GovernorateFromJson(json);
-}
+abstract class ShowSpecializationsResponseModel
+    with _$ShowSpecializationsResponseModel {
+  const factory ShowSpecializationsResponseModel({
+    required String message,
+    @JsonKey(name: "data") required List<Specialization> specializations,
+    bool? status,
+    int? code,
+  }) = _ShowSpecializationsResponseModel;
 
-@freezed
-abstract class SpecializationData with _$SpecializationData {
-  const factory SpecializationData({
-    required int id,
-    required String name,
-    required List<Doctor> doctors,
-  }) = _SpecializationData;
-  factory SpecializationData.fromJson(Map<String, dynamic> json) =>
-      _$SpecializationDataFromJson(json);
-}
-
-@freezed
-abstract class City with _$City {
-  const factory City({
-    required int id,
-    required String name,
-    @JsonKey(name: "governrate") required Governorate governorate,
-  }) = _City;
-
-  factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
-}
-
-@freezed
-abstract class Specialization with _$Specialization {
-  const factory Specialization({required int id, required String name}) =
-      _Specialization;
-
-  factory Specialization.fromJson(Map<String, dynamic> json) =>
-      _$SpecializationFromJson(json);
+  factory ShowSpecializationsResponseModel.fromJson(
+    Map<String, dynamic> json,
+  ) => _$ShowSpecializationsResponseModelFromJson(json);
 }
 
 @freezed
@@ -75,4 +51,34 @@ abstract class Doctor with _$Doctor {
   }) = _Doctor;
 
   factory Doctor.fromJson(Map<String, dynamic> json) => _$DoctorFromJson(json);
+}
+
+@freezed
+abstract class Specialization with _$Specialization {
+  const factory Specialization({
+    required int id,
+    required String name,
+    required List<Doctor> doctors,
+  }) = _Specialization;
+  factory Specialization.fromJson(Map<String, dynamic> json) =>
+      _$SpecializationFromJson(json);
+}
+
+@freezed
+abstract class City with _$City {
+  const factory City({
+    required int id,
+    required String name,
+    @JsonKey(name: "governrate") required Governorate governorate,
+  }) = _City;
+
+  factory City.fromJson(Map<String, dynamic> json) => _$CityFromJson(json);
+}
+
+@freezed
+abstract class Governorate with _$Governorate {
+  const factory Governorate({required int id, required String name}) =
+      _Governorate;
+  factory Governorate.fromJson(Map<String, dynamic> json) =>
+      _$GovernorateFromJson(json);
 }

@@ -6,68 +6,43 @@ part of 'specializations_response_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SpecializationsResponseModel _$SpecializationsResponseModelFromJson(
+_AllSpecializationsResponseModel _$AllSpecializationsResponseModelFromJson(
   Map<String, dynamic> json,
-) => _SpecializationsResponseModel(
+) => _AllSpecializationsResponseModel(
   message: json['message'] as String,
-  specializationData: SpecializationData.fromJson(
-    json['specializationData'] as Map<String, dynamic>,
-  ),
-  status: json['status'] as bool,
-  code: (json['code'] as num).toInt(),
+  specialization: Specialization.fromJson(json['data'] as Map<String, dynamic>),
+  status: json['status'] as bool?,
+  code: (json['code'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$SpecializationsResponseModelToJson(
-  _SpecializationsResponseModel instance,
+Map<String, dynamic> _$AllSpecializationsResponseModelToJson(
+  _AllSpecializationsResponseModel instance,
 ) => <String, dynamic>{
   'message': instance.message,
-  'specializationData': instance.specializationData,
+  'data': instance.specialization,
   'status': instance.status,
   'code': instance.code,
 };
 
-_Governorate _$GovernorateFromJson(Map<String, dynamic> json) =>
-    _Governorate(id: (json['id'] as num).toInt(), name: json['name'] as String);
-
-Map<String, dynamic> _$GovernorateToJson(_Governorate instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
-
-_SpecializationData _$SpecializationDataFromJson(Map<String, dynamic> json) =>
-    _SpecializationData(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      doctors: (json['doctors'] as List<dynamic>)
-          .map((e) => Doctor.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$SpecializationDataToJson(_SpecializationData instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'doctors': instance.doctors,
-    };
-
-_City _$CityFromJson(Map<String, dynamic> json) => _City(
-  id: (json['id'] as num).toInt(),
-  name: json['name'] as String,
-  governorate: Governorate.fromJson(json['governrate'] as Map<String, dynamic>),
+_ShowSpecializationsResponseModel _$ShowSpecializationsResponseModelFromJson(
+  Map<String, dynamic> json,
+) => _ShowSpecializationsResponseModel(
+  message: json['message'] as String,
+  specializations: (json['data'] as List<dynamic>)
+      .map((e) => Specialization.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  status: json['status'] as bool?,
+  code: (json['code'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$CityToJson(_City instance) => <String, dynamic>{
-  'id': instance.id,
-  'name': instance.name,
-  'governrate': instance.governorate,
+Map<String, dynamic> _$ShowSpecializationsResponseModelToJson(
+  _ShowSpecializationsResponseModel instance,
+) => <String, dynamic>{
+  'message': instance.message,
+  'data': instance.specializations,
+  'status': instance.status,
+  'code': instance.code,
 };
-
-_Specialization _$SpecializationFromJson(Map<String, dynamic> json) =>
-    _Specialization(
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$SpecializationToJson(_Specialization instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
 
 _Doctor _$DoctorFromJson(Map<String, dynamic> json) => _Doctor(
   id: (json['id'] as num).toInt(),
@@ -104,3 +79,37 @@ Map<String, dynamic> _$DoctorToJson(_Doctor instance) => <String, dynamic>{
   'start_time': instance.startTime,
   'end_time': instance.endTime,
 };
+
+_Specialization _$SpecializationFromJson(Map<String, dynamic> json) =>
+    _Specialization(
+      id: (json['id'] as num).toInt(),
+      name: json['name'] as String,
+      doctors: (json['doctors'] as List<dynamic>)
+          .map((e) => Doctor.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$SpecializationToJson(_Specialization instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'doctors': instance.doctors,
+    };
+
+_City _$CityFromJson(Map<String, dynamic> json) => _City(
+  id: (json['id'] as num).toInt(),
+  name: json['name'] as String,
+  governorate: Governorate.fromJson(json['governrate'] as Map<String, dynamic>),
+);
+
+Map<String, dynamic> _$CityToJson(_City instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'governrate': instance.governorate,
+};
+
+_Governorate _$GovernorateFromJson(Map<String, dynamic> json) =>
+    _Governorate(id: (json['id'] as num).toInt(), name: json['name'] as String);
+
+Map<String, dynamic> _$GovernorateToJson(_Governorate instance) =>
+    <String, dynamic>{'id': instance.id, 'name': instance.name};
