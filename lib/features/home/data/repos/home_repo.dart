@@ -16,4 +16,15 @@ class HomeRepo {
       return ApiResult.failure(errorHandler);
     }
   }
+
+  Future<ApiResult<AllSpecializationsResponseModel>>
+  getAllSpecializations() async {
+    try {
+      final response = await _homeApiService.getAllSpecializations();
+
+      return ApiResult.success(response);
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
 }

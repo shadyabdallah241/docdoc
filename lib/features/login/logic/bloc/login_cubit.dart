@@ -29,11 +29,6 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> login({required String email, required String password}) async {
-    emitLoginStates(
-      LoginRequestBody(
-        email: emailController.text,
-        password: passwordController.text,
-      ),
-    );
+    emitLoginStates(LoginRequestBody(email: email, password: password));
   }
 }

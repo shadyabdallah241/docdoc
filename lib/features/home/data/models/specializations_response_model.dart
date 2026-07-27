@@ -8,7 +8,7 @@ abstract class AllSpecializationsResponseModel
     with _$AllSpecializationsResponseModel {
   const factory AllSpecializationsResponseModel({
     String? message,
-    @JsonKey(name: 'data') List<Specialization>? specializationData,
+    @JsonKey(name: 'data') List<Specialization>? data,
     bool? status,
     int? code,
   }) = _AllSpecializationsResponseModel;
@@ -22,7 +22,7 @@ abstract class ShowSpecializationsResponseModel
     with _$ShowSpecializationsResponseModel {
   const factory ShowSpecializationsResponseModel({
     String? message,
-    @JsonKey(name: 'data') Specialization? specializationData,
+    @JsonKey(name: 'data') Specialization? data,
     bool? status,
     int? code,
   }) = _ShowSpecializationsResponseModel;
@@ -30,6 +30,15 @@ abstract class ShowSpecializationsResponseModel
   factory ShowSpecializationsResponseModel.fromJson(
     Map<String, dynamic> json,
   ) => _$ShowSpecializationsResponseModelFromJson(json);
+}
+
+@freezed
+abstract class DoctorSpecialization with _$DoctorSpecialization {
+  const factory DoctorSpecialization({int? id, String? name}) =
+      _DoctorSpecialization;
+
+  factory DoctorSpecialization.fromJson(Map<String, dynamic> json) =>
+      _$DoctorSpecializationFromJson(json);
 }
 
 @freezed
@@ -44,7 +53,7 @@ abstract class Doctor with _$Doctor {
     String? address,
     String? description,
     String? degree,
-    Specialization? specialization,
+    DoctorSpecialization? specialization,
     City? city,
     @JsonKey(name: 'appoint_price') int? appointPrice,
     @JsonKey(name: 'start_time') String? startTime,

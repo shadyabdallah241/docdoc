@@ -1,6 +1,4 @@
 import 'package:docdoc/core/theme/app_colors.dart';
-import 'package:docdoc/features/home/logic/bloc/home_state.dart';
-import 'package:docdoc/features/home/logic/bloc/specialization_cubit.dart';
 import 'package:docdoc/features/home/ui/widgets/doctor_specially.dart';
 import 'package:docdoc/features/home/ui/widgets/find_nearby.dart';
 import 'package:docdoc/features/home/ui/widgets/home_app_bar.dart';
@@ -8,7 +6,6 @@ import 'package:docdoc/features/home/ui/widgets/home_floating_action_button.dart
 import 'package:docdoc/features/home/ui/widgets/home_navigation_bar.dart';
 import 'package:docdoc/features/home/ui/widgets/recommendation_doctor.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,38 +28,9 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       FindNearby(),
                       SizedBox(height: 24.h),
-                      BlocBuilder<SpecializationCubit, HomeState>(
-                        buildWhen: (previous, current) =>
-                            current is Loading ||
-                            current is Success ||
-                            current is Error,
-                        builder: (context, state) {
-                          return state.maybeWhen(
-                            loading: () => const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                            success: (homeData) {
-                              final specializations =
-                                  homeData.specializations ?? [];
-                              print(
-                                'Specializations fetched: ${specializations.length}',
-                              );
-                              return Column(
-                                children: [
-                                  DoctorSpecially(specialties: specializations),
-                                  SizedBox(height: 15.h),
-                                  RecommendationDoctor(
-                                    doctors: homeData.doctors ?? [],
-                                  ),
-                                ],
-                              );
-                            },
-                            error: (error) =>
-                                Text(error.apiError.message.toString()),
-                            orElse: () => const SizedBox.shrink(),
-                          );
-                        },
-                      ),
+                      DoctorSpecially(),
+                      SizedBox(height: 15.h),
+                      RecommendationDoctor(),
                     ],
                   ),
                 ),
