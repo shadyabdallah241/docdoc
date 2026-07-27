@@ -1,5 +1,8 @@
 import 'package:docdoc/core/di/dependency_injection.dart';
 import 'package:docdoc/core/routing/routes.dart';
+import 'package:docdoc/features/home/logic/bloc/doctor_cubit.dart';
+import 'package:docdoc/features/home/logic/bloc/specialization_cubit.dart';
+import 'package:docdoc/features/home/ui/home_screen.dart';
 import 'package:docdoc/features/login/logic/bloc/login_cubit.dart';
 import 'package:docdoc/features/onboarding/onboarding_screen.dart';
 import 'package:docdoc/features/signup/logic/bloc/signup_cubit.dart';
@@ -10,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/login/ui/login_screen.dart';
 
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
@@ -30,12 +33,18 @@ class AppRouter {
             child: SignupScreen(),
           ),
         );
-      default:
+      case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            body: Center(child: Text("No route defined for ${settings.name}")),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => getIt<SpecializationCubit>()),
+              BlocProvider(create: (context) => getIt<DoctorsCubit>()),
+            ],
+            child: HomeScreen(),
           ),
         );
+      default:
+        return null;
     }
   }
 }

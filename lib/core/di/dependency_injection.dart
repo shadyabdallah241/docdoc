@@ -1,5 +1,9 @@
 import 'package:docdoc/core/networking/api_service.dart';
 import 'package:docdoc/core/networking/dio_factory.dart';
+import 'package:docdoc/features/home/data/apis/home_api_service.dart';
+import 'package:docdoc/features/home/data/repos/home_repo.dart';
+import 'package:docdoc/features/home/logic/bloc/doctor_cubit.dart';
+import 'package:docdoc/features/home/logic/bloc/specialization_cubit.dart';
 import 'package:docdoc/features/login/data/repos/login_repo.dart';
 import 'package:docdoc/features/login/logic/bloc/login_cubit.dart';
 import 'package:docdoc/features/signup/data/repo/signup_repo.dart';
@@ -23,4 +27,13 @@ void setupGetIt() {
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt<SignupRepo>()));
 
   //Home
+  getIt.registerLazySingleton<HomeApiService>(() => HomeApiService(dio));
+
+  getIt.registerLazySingleton<HomeRepo>(
+    () => HomeRepo(getIt<HomeApiService>()),
+  );
+  getIt.registerFactory<SpecializationCubit>(
+    () => SpecializationCubit(getIt<HomeRepo>()),
+  );
+  getIt.registerFactory<DoctorsCubit>(() => DoctorsCubit(getIt<HomeRepo>()));
 }

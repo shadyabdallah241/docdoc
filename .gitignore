@@ -11,7 +11,10 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-
+# Firebase Service Account
+assets/firebase-service-account.json
+# Firebase Service Account
+android/fastlane/google-service-account.json
 # IntelliJ related
 *.iml
 *.ipr
